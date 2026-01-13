@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoVerse - Fun Environmental Learning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="leaves-bg"></div>
+  <div id="main-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;">
+    <img src="children-bg.png" id="main-bg-img" style="width:100vw;height:110vh;object-fit:cover;object-position:center 90%;position:absolute;top:0;left:0;transition:transform 0.3s;" alt="Background" />
+  </div>
+  <header style="position:relative;z-index:2;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;">
+        <span style="display:flex;align-items:center;">
+  <img src="eco-leaf.png" alt="Eco logo" style="height:7rem;width:auto;margin-right:-0.7rem;margin-bottom:0.1rem;">
+          <h1 style="display:inline;font-family:'Fredoka', 'Quicksand', Arial,sans-serif;font-size:2.5rem;margin:0;padding-left:0;letter-spacing:0.02em;">Verse</h1>
+        </span>
+      </div>
+    </div>
+    <nav style="margin-top:1rem;">
+  <a href="#quizzes" id="nav-quizzes">Quizzes</a>
+  <a href="#games" id="nav-games">Games</a>
+  <a href="#challenges">Eco-Challenges</a>
+  <a href="#leaderboard">Leaderboard</a>
+  <a href="#dashboard">Teacher Dashboard</a>
+  <script>
+    // Smooth scroll to section on nav click, all sections remain visible
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').replace('#','');
+        const target = document.getElementById(targetId) || document.querySelector('section#' + targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+    </nav>
+  </header>
+  <main style="position:relative;z-index:2;">
+    <section class="hero">
+      <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Young plant sprouting" style="width:90px;margin-bottom:10px;filter:drop-shadow(0 2px 8px #bdbdbd);border-radius:16px;">
+      <h2>Welcome, Eco-Heroes!</h2>
+      <p style="font-size:1.2rem;">Play games, take on real-world challenges, and earn <span class="eco-coin">🪙</span> Eco-Coins!</p>
+      <button id="startBtn">Start Your Adventure</button>
+    </section>
+    <section id="games" style="margin:2rem auto;max-width:700px;">
+      <h2 style="text-align:center;font-family:'Fredoka','Quicksand',Arial,sans-serif;">Games</h2>
+      <div id="waste-game" style="background:rgba(255,255,255,0.7);border-radius:18px;padding:1.5rem 1rem;margin-bottom:2rem;box-shadow:0 2px 12px rgba(76,88,76,0.08);">
+        <h3 style="text-align:center;">Waste Segregation Game</h3>
+        <p style="text-align:center;">Drag each item to the correct bin!</p>
+        <div id="waste-items" style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;"></div>
+        <div id="waste-bins" style="display:flex;justify-content:center;gap:2.5rem;">
+          <div class="waste-bin" data-bin="organic" style="background:#b2dfdb;border-radius:16px;padding:1rem 1.2rem;text-align:center;width:120px;min-height:120px;">
+            <div style="font-size:2.2rem;">🍌</div>
+            <div>Organic</div>
+          </div>
+          <div class="waste-bin" data-bin="recyclable" style="background:#bbdefb;border-radius:16px;padding:1rem 1.2rem;text-align:center;width:120px;min-height:120px;">
+            <div style="font-size:2.2rem;">♻</div>
+            <div>Recyclable</div>
+          </div>
+          <div class="waste-bin" data-bin="other" style="background:#ffe082;border-radius:16px;padding:1rem 1.2rem;text-align:center;width:120px;min-height:120px;">
+            <div style="font-size:2.2rem;">🗑</div>
+            <div>Other</div>
+          </div>
+        </div>
+        <div id="waste-feedback" style="text-align:center;margin-top:1.2rem;font-weight:600;"></div>
+        <div id="waste-score" style="text-align:center;margin-top:0.5rem;"></div>
+      </div>
+      <div id="eco-flip-game" style="background:rgba(255,255,255,0.7);border-radius:18px;padding:1.5rem 1rem;margin-bottom:2rem;box-shadow:0 2px 12px rgba(76,88,76,0.08);">
+        <h3 style="text-align:center;">Eco Flip Cards</h3>
+        <p style="text-align:center;">Match eco-facts with the right actions! (e.g., “Turn off lights” → “Saves energy”)</p>
+        <div id="flip-cards-container" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;max-width:420px;margin:1.2rem auto 0 auto;"></div>
+        <div id="flip-feedback" style="text-align:center;margin-top:1.2rem;font-weight:600;"></div>
+        <div id="flip-score" style="text-align:center;margin-top:0.5rem;"></div>
+      </div>
+      <!-- Simple Starter Eco Flip Cards Game (self-contained) -->
+      <div id="simple-eco-flip-game" style="background:rgba(224,247,250,0.95);border-radius:18px;padding:1.5rem 1rem;margin-bottom:2rem;box-shadow:0 2px 12px rgba(76,88,76,0.08);max-width:600px;margin-left:auto;margin-right:auto;">
+        <h3 style="text-align:center;">Eco Flip Cards (Simple Starter Template)</h3>
+        <div id="simple-eco-flip-style"></div>
+        <div class="simple-grid" id="simpleGameBoard" style="display:grid;grid-template-columns:repeat(4,120px);grid-gap:15px;justify-content:center;"></div>
+      </div>
+    </section>
+    <section id="quizzes">
+      <h3>Interactive Quizzes</h3>
+      <div class="quiz-area">
+        <div id="quiz-question">🌳 Ready to test your eco-knowledge?</div>
+        <div id="quiz-options"></div>
+        <div id="quiz-feedback"></div>
+      </div>
+    </section>
+    <section id="challenges">
+      <h3>Eco-Challenges <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80" alt="Sprouting plant icon" style="width:32px;vertical-align:middle;margin-left:6px;border-radius:8px;"></h3>
+      <div class="challenge-area">
+        <div id="challenge-desc">♻ Complete real-world eco-missions!</div>
+        <button id="completeChallengeBtn">Mark Challenge as Done</button>
+        <div id="challenge-feedback"></div>
+      </div>
+    </section>
+    <section id="leaderboard">
+      <h3>Leaderboard <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/120px-The_Earth_seen_from_Apollo_17.jpg" alt="Earth icon" style="width:28px;vertical-align:middle;margin-left:6px;border-radius:8px;"></h3>
+      <div class="leaderboard-area">
+        <ol id="leaderboard-list" style="padding-left:1.2em;">
+          <li>Alex <span class="eco-coin">10</span> <span class="badge">Tree Planter</span></li>
+          <li>Sam <span class="eco-coin">8</span> <span class="badge">Waste Warrior</span></li>
+          <li>Jamie <span class="eco-coin">7</span> <span class="badge">Energy Saver</span></li>
+        </ol>
+      </div>
+    </section>
+    <section id="dashboard">
+      <h3>Teacher Dashboard <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80" alt="Sprouting plant icon" style="width:28px;vertical-align:middle;margin-left:6px;border-radius:8px;"></h3>
+      <div class="dashboard-area">
+        <div>📊 Student Progress</div>
+        <table id="progress-table" style="width:100%;margin-top:0.5em;border-collapse:collapse;">
+          <thead>
+            <tr style="background:#e0e0e0;font-weight:600;">
+              <th>Name</th><th>Eco-Coins</th><th>Badges</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Alex</td><td>10</td><td>Tree Planter</td></tr>
+            <tr><td>Sam</td><td>8</td><td>Waste Warrior</td></tr>
+            <tr><td>Jamie</td><td>7</td><td>Energy Saver</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>
