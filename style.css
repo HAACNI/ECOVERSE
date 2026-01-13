@@ -1,0 +1,430 @@
+/* --- Eco Flip Cards Game Styles --- */
+.flip-card {
+  background: #e0f7fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #bdbdbd44;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  min-width: 120px;
+  min-height: 60px;
+  margin: 0.2rem;
+}
+/* Animated falling leaves background */
+#leaves-bg {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  overflow: hidden;
+}
+.falling-leaf {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.9;
+  user-select: none;
+  animation-name: fall-leaf;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  animation-duration: 7s;
+  top: -60px;
+}
+@keyframes fall-leaf {
+  0% {
+    top: -60px;
+    opacity: 0.9;
+    transform: rotate(0deg) scale(1);
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    top: 100vh;
+    opacity: 0.2;
+    transform: rotate(360deg) scale(0.8);
+  }
+}
+/* Floating leaves and mist overlays for forest background */
+#leaf-overlay, #mist-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+}
+.floating-leaf {
+  position: absolute;
+  font-size: 2.2rem;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  filter: drop-shadow(0 2px 8px #388e3c88);
+}
+.floating-mist {
+  position: absolute;
+  width: 120px;
+  height: 40px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, rgba(200,255,220,0.12) 100%);
+  border-radius: 40px;
+  opacity: 0.5;
+  filter: blur(8px);
+  pointer-events: none;
+}
+/* Animated forest background and overlay */
+#forest-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -2;
+}
+#forest-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+#forest-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(255,213,128,0.15) 0%, rgba(76,88,76,0.18) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+body {
+  background: none !important;
+}
+#progress-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px #bdbdbd99;
+  overflow: hidden;
+}
+#progress-table th, #progress-table td {
+  padding: 0.7em 0.5em;
+  text-align: center;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+#progress-table th {
+  background: #e0e0e0;
+  font-weight: 700;
+  color: #6c63ff;
+}
+#progress-table tr:nth-child(even) td {
+  background: #f5f5f5;
+}
+.quiz-area button.quiz-btn {
+  background: linear-gradient(90deg, #6c63ff 0%, #bdbdbd 100%);
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 0.5em 1.2em;
+  margin: 0.3em 0.5em 0.3em 0;
+  font-size: 1em;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 4px #bdbdbd99;
+  transition: background 0.2s, transform 0.2s;
+}
+.quiz-area button.quiz-btn:hover {
+  background: linear-gradient(90deg, #bdbdbd 0%, #6c63ff 100%);
+  color: #fff;
+  transform: scale(1.07);
+}
+.quiz-area #quiz-feedback {
+  margin-top: 0.7em;
+  font-size: 1.1em;
+  font-weight: 600;
+  min-height: 1.2em;
+}
+.challenge-area #challenge-feedback {
+  margin-top: 0.7em;
+  font-size: 1.1em;
+  font-weight: 600;
+  min-height: 1.2em;
+}
+/* Fun, vibrant theme for EcoVerse */
+body {
+  margin: 0;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+  background: linear-gradient(135deg, #ece9e6 0%, #ffffff 100%);
+  color: #222;
+}
+header {
+  background: #f5f5f5;
+  color: #333;
+  padding: 1.5rem 1rem 1rem 1rem;
+  text-align: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 2px;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 1.2rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #888;
+}
+.hero {
+  background: #f7f7f7;
+  margin: 2rem auto 1.5rem auto;
+  padding: 2rem 1rem;
+  border-radius: 30px;
+  max-width: 500px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  text-align: center;
+}
+.hero h2 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+.hero button {
+  background: linear-gradient(90deg, #e0e0e0 0%, #bdbdbd 100%);
+  color: #333;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, transform 0.2s;
+}
+.hero button:hover {
+  background: linear-gradient(90deg, #bdbdbd 0%, #e0e0e0 100%);
+  color: #222;
+  transform: scale(1.05);
+}
+section {
+  margin: 2rem auto;
+  max-width: 600px;
+    background: rgba(255,255,255,0.22);
+  border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(76,88,76,0.08), 0 1.5px 8px rgba(255,213,128,0.06);
+  padding: 1.5rem 1rem;
+    backdrop-filter: blur(24px);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+section h3 {
+  color: #333;
+  margin-top: 0;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+.quiz-preview, .challenge-preview, .leaderboard-preview, .dashboard-preview {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #666;
+}
+footer {
+  text-align: center;
+  padding: 1.5rem 0 1rem 0;
+  color: #333;
+  background: #e0e0e0;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+/* Feature-specific styles */
+.quiz-area, .challenge-area, .leaderboard-area, .dashboard-area {
+  margin-top: 1rem;
+  padding: 1.2rem 1rem;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.16);
+  box-shadow: 0 2px 12px rgba(76,88,76,0.08);
+  backdrop-filter: blur(18px);
+  transition: box-shadow 0.2s, background 0.3s;
+}
+.quiz-area:hover, .challenge-area:hover, .leaderboard-area:hover, .dashboard-area:hover {
+  box-shadow: 0 4px 24px rgba(122,122,122,0.18);
+}
+.badge {
+  display: inline-block;
+  background: #bdbdbd;
+  color: #333;
+  font-weight: 500;
+  border-radius: 16px;
+  padding: 0.4em 1.2em;
+  margin: 0.2em;
+  font-size: 1em;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+  box-shadow: 0 1px 4px #e0e0e0;
+  letter-spacing: 1px;
+}
+.eco-coin {
+  display: inline-block;
+  background: #fff;
+  color: #6c63ff;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  font-weight: 700;
+  margin: 0 0.2em;
+  box-shadow: 0 2px 8px #bdbdbd99;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+/* Fun, vibrant theme for EcoVerse */
+body {
+  margin: 0;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+  background: linear-gradient(135deg, #ece9e6 0%, #ffffff 100%);
+  color: #222;
+}
+header {
+  background: #f5f5f5;
+  color: #333;
+  padding: 1.5rem 1rem 1rem 1rem;
+  text-align: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 2px;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 1.2rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #888;
+}
+.hero {
+  background: #f7f7f7;
+  margin: 2rem auto 1.5rem auto;
+  padding: 2rem 1rem;
+  border-radius: 30px;
+  max-width: 500px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  text-align: center;
+}
+.hero h2 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+.hero button {
+  background: linear-gradient(90deg, #6c63ff 0%, #bdbdbd 100%);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, transform 0.2s;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+.hero button:hover {
+  background: linear-gradient(90deg, #bdbdbd 0%, #6c63ff 100%);
+  color: #fff;
+  transform: scale(1.07);
+}
+section {
+  margin: 2rem auto;
+  max-width: 600px;
+  background: #f5f5f5;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 1.5rem 1rem;
+}
+section h3 {
+  color: #333;
+  margin-top: 0;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+.quiz-preview, .challenge-preview, .leaderboard-preview, .dashboard-preview {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #666;
+}
+footer {
+  text-align: center;
+  padding: 1.5rem 0 1rem 0;
+  color: #333;
+  background: #e0e0e0;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+/* Feature-specific styles */
+.quiz-area, .challenge-area, .leaderboard-area, .dashboard-area {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 15px;
+  background: #e0e0e0;
+  box-shadow: 0 1px 4px rgba(122, 122, 122, 0.08);
+}
+.badge {
+  display: inline-block;
+  background: #bdbdbd;
+  color: #333;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 0.3em 1em;
+  margin: 0.2em;
+  font-size: 1em;
+  font-family: 'Fredoka', 'Quicksand', 'Nunito', Arial, sans-serif;
+}
+.eco-coin {
+  display: inline-block;
+  background: #f5f5f5;
+  color: #333;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  font-weight: 600;
+  margin: 0 0.2em;
+  box-shadow: 0 1px 4px #bdbdbd99;
+}
